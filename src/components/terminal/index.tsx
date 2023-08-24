@@ -11,7 +11,7 @@ export default function TerminalPanel() {
   ]);
 
   function calculateAge() {
-    const birthDate = new Date(2002, 9, 18); // Months are zero-based
+    const birthDate: any = new Date(2002, 9, 18); // Months are zero-based
     const currentDate = Date.now();
     const ageInMilliseconds = currentDate - birthDate;
     const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);

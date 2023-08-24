@@ -1,3 +1,6 @@
+//@ts-ignore
+/* tslint:disable */
+//@ts-ignore
 "use client";
 import { useEffect, useRef } from "react";
 import { grid } from "../../../public/grid";
@@ -13,7 +16,7 @@ export default function Globe() {
     script.async = true;
     script.onload = initializeGlobe;
     document.body.appendChild(script);
-  }, []);
+  });
 
   useEffect(() => {
     if (typeof ENCOM !== "undefined" && ENCOM.Globe) {
@@ -61,7 +64,6 @@ export default function Globe() {
           viewAngle: 0.1,
         }
       );
-
       // Add the globe to the DOM
       container.appendChild(globeRef.current.domElement);
       globeRef.current.init();
