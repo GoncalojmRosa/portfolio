@@ -27,7 +27,7 @@ export default function Home() {
       <div className="flex mt-4 text-center items-center justify-center flex-col">
         <h1 className="text-4xl">{"@Gonçalo@"}</h1>
         <h2 className="text-2xl m-0">
-          I'm a 21 years-old developer <br /> who uses{" "}
+          I&apos;m a 21 years-old developer <br /> who uses{" "}
           <span
             className="relative group text-blue-300 cursor-pointer"
             onClick={() => {
@@ -41,8 +41,8 @@ export default function Home() {
                       My language of choice for{" "}
                       <span className="text-blue-300">building</span> websites
                       using <span className="text-blue-300">typescript</span>.
-                      I've been using shadcn/ui to build UI/UX. Creating
-                      applications since 2020, and I'd call myself{" "}
+                      I&apos;ve been using shadcn/ui to build UI/UX. Creating
+                      applications since 2020, and I&apos;d call myself{" "}
                       <span className="text-blue-300">competent</span>.
                     </span>
                   </div>
@@ -110,8 +110,8 @@ export default function Home() {
                       My language of choice for{" "}
                       <span className="text-green-600">web servers</span> using{" "}
                       <span className="text-green-600">express</span> &{" "}
-                      <span className="text-green-600">zod</span>. I've been
-                      using it since 2020, and I'd call myself{" "}
+                      <span className="text-green-600">zod</span>. I&apos;ve
+                      been using it since 2020, and I&apos;d call myself{" "}
                       <span className="text-green-600">competent</span>.
                     </span>
                   </div>
@@ -226,7 +226,7 @@ export default function Home() {
           (more info)
         </Link>
         <h2 className="text-2xl">
-          Let's work together?{" "}
+          Let&apos;s work together?{" "}
           <a className="opacity-50" href="mailto:create@">
             Email Me!
           </a>

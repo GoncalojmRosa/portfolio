@@ -11,7 +11,7 @@ export default function TerminalPanel() {
   ]);
 
   function calculateAge() {
-    const birthDate = new Date(2002, 8, 18); // Months are zero-based
+    const birthDate = new Date(2002, 9, 18); // Months are zero-based
     const currentDate = Date.now();
     const ageInMilliseconds = currentDate - birthDate;
     const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
@@ -28,16 +28,17 @@ export default function TerminalPanel() {
           <TerminalOutput key={Math.random()}>Commands:</TerminalOutput>,
           <TerminalOutput key={Math.random()}></TerminalOutput>,
           <TerminalOutput key={Math.random()}>
-            'age' : will display my current age.
+            &apos;age&apos; : will display my current age.
           </TerminalOutput>,
           <TerminalOutput key={Math.random()}>
-            'langs' will display some of languages that i normally use.
+            &apos;langs&apos; will display some of languages that i normally
+            use.
           </TerminalOutput>,
           <TerminalOutput key={Math.random()}>
-            'projects' will show my github page.
+            &apos;projects&apos; will show my github page.
           </TerminalOutput>,
           <TerminalOutput key={Math.random()}>
-            'clear' will clear the terminal.
+            &apos;clear&apos; will clear the terminal.
           </TerminalOutput>,
         ]);
         break;

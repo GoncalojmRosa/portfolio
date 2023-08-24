@@ -14,12 +14,6 @@ export default function RootLayout({
 }) {
   return (
     <html className="dark" lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="dark:bg-black">{children}</body>
     </html>
   );
