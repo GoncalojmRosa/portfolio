@@ -1,58 +1,100 @@
 "use client";
-import { ReactTerminal } from "react-terminal";
-import { TerminalContextProvider } from "react-terminal";
+import { data } from "autoprefixer";
+import { useState } from "react";
+import Terminal, { ColorMode, TerminalOutput } from "react-terminal-ui";
 
-export default function Terminal() {
-  const commands = {
-    help: (
-      <span>
-        <strong>clear</strong> - clears the console. <br />
-        <strong>change_prompt &lt;PROMPT&gt;</strong> - Change the prompt of the
-        terminal. <br />
-        <strong>change_theme &lt;THEME&gt;</strong> - Changes the theme of the
-        terminal. Allowed themes - light, dark, material-light, material-dark,
-        material-ocean, matrix and dracula. <br />
-        <strong>toggle_control_bar</strong> - Hides / Display the top control
-        bar. <br />
-        <strong>toggle_control_buttons</strong> - Hides / Display the top
-        buttons on control bar. <br />
-        <strong>evaluate_math_expression &lt;EXPR&gt;</strong> - Evaluates a
-        mathematical expression (eg, <strong>4*4</strong>) by hitting a public
-        API, api.mathjs.org.
-      </span>
-    ),
-    whoami: "GonçaloRosa",
-    skills: "",
-    age: () =>
-      `${
-        (new Date() - new Date(1032332400000)) /
-        (1000 * 60 * 60 * 24 * 365.25).toString().substring(0, 12)
-      }`,
-    cd: (directory: any) => `changed path to ${directory}`,
-  };
+export default function TerminalPanel() {
+  const [terminalLineData, setTerminalLineData] = useState([
+    <TerminalOutput key={Math.random()}>
+      Welcome to my terminal!
+    </TerminalOutput>,
+  ]);
 
-  const welcomeMessage = (
-    <span>
-      Type "help" for all available commands. <br />
-    </span>
-  );
+  function calculateAge() {
+    const birthDate = new Date(2002, 8, 18); // Months are zero-based
+    const currentDate = Date.now();
+    const ageInMilliseconds = currentDate - birthDate;
+    const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+    return ageInYears.toFixed(12);
+  }
+
+  function onTerminalInput(data: string) {
+    switch (data) {
+      case "clear":
+        setTerminalLineData([]);
+        break;
+      case "help":
+        setTerminalLineData([
+          <TerminalOutput key={Math.random()}>Commands:</TerminalOutput>,
+          <TerminalOutput key={Math.random()}></TerminalOutput>,
+          <TerminalOutput key={Math.random()}>
+            'age' : will display my current age.
+          </TerminalOutput>,
+          <TerminalOutput key={Math.random()}>
+            'langs' will display some of languages that i normally use.
+          </TerminalOutput>,
+          <TerminalOutput key={Math.random()}>
+            'projects' will show my github page.
+          </TerminalOutput>,
+          <TerminalOutput key={Math.random()}>
+            'clear' will clear the terminal.
+          </TerminalOutput>,
+        ]);
+        break;
+
+      case "age":
+        setTerminalLineData([
+          ...terminalLineData,
+          <TerminalOutput key={Math.random()}>
+            Currently {calculateAge()} years-old
+          </TerminalOutput>,
+        ]);
+
+        break;
+
+      case "langs":
+        setTerminalLineData([
+          ...terminalLineData,
+          <TerminalOutput key={Math.random()}>
+            <ul>
+              <li>⭐ JavaScript</li>
+              <li>⭐ TypeScript</li>
+              <li>C</li>
+              <li>C++</li>
+              <li>C#</li>
+              <li>PHP</li>
+              <li>Java</li>
+              <li>Python</li>
+            </ul>
+          </TerminalOutput>,
+        ]);
+        break;
+
+      case "projects":
+        window.open(
+          "https://github.com/GoncalojmRosa?tab=repositories",
+          "_blank"
+        );
+      default:
+        setTerminalLineData([
+          ...terminalLineData,
+          <TerminalOutput key={Math.random()}>
+            Unrecognized command
+          </TerminalOutput>,
+        ]);
+        break;
+    }
+  }
   return (
-    <TerminalContextProvider>
-      <ReactTerminal
-        themes={{
-          "my-theme": {
-            themeBGColor: "#000000",
-            themeToolbarColor: "#DBDBDB",
-            themeColor: "#FFFEFC",
-            themePromptColor: "#a917a8",
-          },
-        }}
-        theme="my-theme"
-        showControlButtons={false}
-        showControlBar={false}
-        welcomeMessage={welcomeMessage}
-        commands={commands}
-      />
-    </TerminalContextProvider>
+    <div className="flex items-start justify-center w-full h-full overflow-y-hidden">
+      <Terminal
+        name="Explore my portfolio via terminal"
+        colorMode={ColorMode.Dark}
+        onInput={onTerminalInput}
+        height={`${window.innerHeight * 0.89}px`}
+      >
+        {terminalLineData}
+      </Terminal>
+    </div>
   );
 }

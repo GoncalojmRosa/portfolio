@@ -1,7 +1,6 @@
 "use client";
 import Globe from "@/components/globeWrapper";
 import Modal from "@/components/modal";
-import Terminal from "@/components/terminal";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -28,7 +27,7 @@ export default function Home() {
       <div className="flex mt-4 text-center items-center justify-center flex-col">
         <h1 className="text-4xl">{"@Gonçalo@"}</h1>
         <h2 className="text-2xl m-0">
-          I'm a 21 years old developer <br /> who uses{" "}
+          I'm a 21 years-old developer <br /> who uses{" "}
           <span
             className="relative group text-blue-300 cursor-pointer"
             onClick={() => {
@@ -50,20 +49,23 @@ export default function Home() {
                   <div className="flex items-center justify-center gap-10 m-10 flex-wrap">
                     {data.react.map((item) => {
                       return (
-                        <Card key={item.title} className="max-w-md min-h-fit">
+                        <Card
+                          key={Math.random()}
+                          className="max-w-md h-[500px] flex justify-center items-center flex-col"
+                        >
                           <CardHeader className="space-y-3 text-center">
                             <Image
                               src={`/images/${item.image}`}
                               alt="Netflix Logo"
-                              width={400}
-                              height={400}
+                              width={300}
+                              height={300}
                               className="mx-auto rounded-md"
                             />
                             <div className="space-x-5 bottom-0 ">
                               {item.tags.map((tag) => {
                                 return (
                                   <Badge
-                                    key={item.title}
+                                    key={Math.random()}
                                     className={`bg-${tag.color} text-sm`}
                                   >
                                     {" "}
@@ -116,7 +118,10 @@ export default function Home() {
                   <div className="flex items-center justify-center gap-10 m-10 flex-wrap">
                     {data.node.map((item) => {
                       return (
-                        <Card key={item.title} className="max-w-md">
+                        <Card
+                          key={Math.random()}
+                          className="max-w-md h-[500px] flex justify-center items-center flex-col"
+                        >
                           <CardHeader className="space-y-3 text-center">
                             <Image
                               src={`/images/${item.image}`}
@@ -129,7 +134,7 @@ export default function Home() {
                               {item.tags.map((tag) => {
                                 return (
                                   <Badge
-                                    key={item.title}
+                                    key={Math.random()}
                                     className={`bg-${tag.color} text-sm`}
                                   >
                                     {" "}
@@ -179,13 +184,13 @@ export default function Home() {
                   <div className="flex items-center justify-center gap-10 m-10 flex-wrap">
                     {data.more.map((item) => {
                       return (
-                        <Card key={item.title}>
+                        <Card key={Math.random()}>
                           <CardHeader className="space-y-3 text-center">
                             <div className="space-x-5">
                               {item.tags.map((tag) => {
                                 return (
                                   <Badge
-                                    key={item.title}
+                                    key={Math.random()}
                                     className={`bg-${tag.color} text-sm`}
                                   >
                                     {" "}
