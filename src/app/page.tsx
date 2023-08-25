@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -35,7 +34,7 @@ export default function Home() {
               setModalVisible(true);
               setModalText(
                 <div className="flex items-center flex-col justify-center">
-                  <div className="text-center w-[400px]">
+                  <div className="text-center w-[400px] min-[320px]:w-fit">
                     <h1 className="underline">React.JS</h1>
                     <span>
                       My language of choice for{" "}
@@ -104,7 +103,7 @@ export default function Home() {
               setModalVisible(true);
               setModalText(
                 <div className="flex items-center flex-col justify-center">
-                  <div className="text-center w-[400px]">
+                  <div className="text-center w-[400px] min-[320px]:w-fit">
                     <h1 className="underline">Node.JS</h1>
                     <span>
                       My language of choice for{" "}
@@ -173,7 +172,7 @@ export default function Home() {
               setModalVisible(true);
               setModalText(
                 <div className="flex items-center flex-col justify-center">
-                  <div className="text-center w-[400px]">
+                  <div className="text-center w-[400px] min-[320px]:w-fit">
                     <h1 className="underline">More Projects</h1>
                     <span>
                       Here are some recent{" "}
