@@ -47,7 +47,7 @@ export default function TerminalPanel() {
         setTerminalLineData([
           ...terminalLineData,
           <TerminalOutput key={Math.random()}>
-            Currently {calculateAge()} years-old
+            {`Currently ${calculateAge()} years-old`}
           </TerminalOutput>,
         ]);
 
@@ -72,10 +72,12 @@ export default function TerminalPanel() {
         break;
 
       case "projects":
-        window.open(
-          "https://github.com/GoncalojmRosa?tab=repositories",
-          "_blank"
-        );
+        typeof window !== "undefined"
+          ? window.open(
+              "https://github.com/GoncalojmRosa?tab=repositories",
+              "_blank"
+            )
+          : "";
       default:
         setTerminalLineData([
           ...terminalLineData,
@@ -92,7 +94,9 @@ export default function TerminalPanel() {
         name="Explore my portfolio via terminal"
         colorMode={ColorMode.Dark}
         onInput={onTerminalInput}
-        height={`${window.innerHeight * 0.89}px`}
+        height={`${
+          typeof window !== "undefined" ? window.innerHeight * 0.89 : 0
+        }px`}
       >
         {terminalLineData}
       </Terminal>
