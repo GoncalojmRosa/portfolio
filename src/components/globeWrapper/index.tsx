@@ -8,6 +8,7 @@ declare namespace ENCOM {
     constructor(width: number, height: number, options: any);
     init(): void;
     tick(): void;
+    addMarker(lat: number, long: number, ip: any, dist?: any): void;
     camera: {
       aspect: number;
       updateProjectionMatrix(): void;
@@ -139,6 +140,27 @@ export default function Globe() {
         container.appendChild(globeRef.current.domElement);
         globeRef.current.init();
         animate();
+        fetch("https://ip-api.io/json")
+          .then((r) => r.text())
+          .then((r) => {
+            if (globeRef.current) {
+              let loc = JSON.parse(r);
+              globeRef.current.addMarker(loc.latitude, loc.longitude, loc.ip);
+              fetch("https://ip-api.io/json/193.137.66.137")
+                .then((r) => r.text())
+                .then((r) => {
+                  let loc2 = JSON.parse(r);
+                  if (globeRef.current) {
+                    globeRef.current.addMarker(
+                      loc2.latitude,
+                      loc2.longitude,
+                      loc2.ip,
+                      Math.abs(loc.lon - loc2.lon) > 25
+                    );
+                  }
+                });
+            }
+          });
         var constellation = [];
         var opts = {
           coreColor: "#ff0000",
