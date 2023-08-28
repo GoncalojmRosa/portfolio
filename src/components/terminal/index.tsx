@@ -1,5 +1,5 @@
 "use client";
-import { data } from "autoprefixer";
+import { calculateAge } from "@/lib/utils";
 import { useState } from "react";
 import Terminal, { ColorMode, TerminalOutput } from "react-terminal-ui";
 
@@ -9,15 +9,6 @@ export default function TerminalPanel() {
       Welcome to my terminal!
     </TerminalOutput>,
   ]);
-
-  function calculateAge() {
-    const birthDate: any = new Date(2002, 9, 18); // Months are zero-based
-    const currentDate = Date.now();
-    const ageInMilliseconds = currentDate - birthDate;
-    const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
-    return ageInYears.toFixed(12);
-  }
-
   function onTerminalInput(data: string) {
     switch (data) {
       case "clear":
@@ -88,15 +79,16 @@ export default function TerminalPanel() {
         break;
     }
   }
+  const redirect = () => {
+    typeof window !== "undefined" ? window.open("/", "_self") : "";
+  };
   return (
-    <div className="flex items-start justify-center w-full h-full overflow-y-hidden">
+    <div className="flex items-start justify-center w-full overflow-y-hidden bg-terminalColor h-screen">
       <Terminal
-        name="Explore my portfolio via terminal"
+        name="Portfolio via terminal"
         colorMode={ColorMode.Dark}
         onInput={onTerminalInput}
-        height={`${
-          typeof window !== "undefined" ? window.innerHeight * 0.89 : 0
-        }px`}
+        redBtnCallback={redirect}
       >
         {terminalLineData}
       </Terminal>

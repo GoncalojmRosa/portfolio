@@ -13,20 +13,27 @@ import Link from "next/link";
 import { ReactElement, useState } from "react";
 import { data } from "../../public/data";
 import Image from "next/image";
+import { calculateAge } from "@/lib/utils";
 
 export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [age, setAge] = useState<string>("");
   const [modalColor, setModalColor] = useState<string>("");
   const [modalText, setModalText] = useState<ReactElement>(<span></span>);
   const closeModal = () => {
     setModalVisible(false);
   };
+
+  setTimeout(() => {
+    setAge(calculateAge());
+  }, 50);
+
   return (
     <main>
       <div className="flex mt-4 text-center items-center justify-center flex-col">
         <h1 className="text-4xl">{"@Gonçalo@"}</h1>
         <h2 className="text-2xl m-0">
-          I&apos;m a 21 years-old developer <br /> who uses{" "}
+          I&apos;m a {age} years-old developer <br /> who uses{" "}
           <span
             className="relative group text-blue-300 cursor-pointer"
             onClick={() => {

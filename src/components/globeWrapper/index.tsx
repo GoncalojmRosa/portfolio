@@ -119,7 +119,7 @@ export default function Globe() {
       if (container && !globeRef.current) {
         globeRef.current = new ENCOM.Globe(
           windowSize.width,
-          windowSize.height * 0.8,
+          windowSize.height * 0.7,
           {
             // Use windowSize.width and windowSize.height
             font: "Inconsolata",
@@ -206,11 +206,11 @@ export default function Globe() {
     if (typeof ENCOM !== "undefined" && ENCOM.Globe) {
       if (globeRef.current) {
         globeRef.current.camera.aspect =
-          windowSize.width / (windowSize.height * 0.8);
+          windowSize.width / (windowSize.height * 0.7);
         globeRef.current.camera.updateProjectionMatrix();
         globeRef.current.renderer.setSize(
           windowSize.width,
-          windowSize.height * 0.8
+          windowSize.height * 0.7
         );
       }
     }
